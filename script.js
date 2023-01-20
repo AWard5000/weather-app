@@ -29,6 +29,7 @@ function formatDate(date) {
 
 
 function displayWeatherCondition(response) {
+  celsiusTemperature = response.data.temperature.current;
   document.querySelector("#city").innerHTML = response.data.city;
   document.querySelector("#temperature").innerHTML = Math.round(
     response.data.temperature.current
@@ -38,8 +39,6 @@ function displayWeatherCondition(response) {
   );
   document.querySelector("#description").innerHTML =
     response.data.condition.description;
-
-  celsiusTemperature = response.data.main.temperature;
 }
 
 function searchCity(city) {
@@ -57,16 +56,14 @@ function handleSubmit(event) {
 
 function convertToCelsius(event) {
   event.preventDefault();
-  let temperatureElement = document.querySelector("#temperature").innerHTML = Math.round(
-    response.data.main.temp); 
+  let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML =  Math.round(celsiusTemperature); 
 } 
 
   function convertToFahrenheit(event) {
   event.preventDefault();
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
-  let temperatureElement = document.querySelector("#temperature").innerHTML = Math.round(
-    response.data.main.temp);
+  let temperatureElement = document.querySelector("#temperature");
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
@@ -99,6 +96,8 @@ function getCurrentLocation(event) {
 
 let currentLocationButton = document.querySelector("#current-location-button");
 currentLocationButton.addEventListener("click", getCurrentLocation);
+
+search("Los Angeles");
 
 
 
