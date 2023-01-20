@@ -17,7 +17,8 @@
     <title>Weather App</title>
   </head>
 
-  <body class="container">
+  <body>
+    <div class="container">
       <div class="weather-app">
         <form class="search-form" id="search-form">
           <div class="row">
@@ -48,24 +49,33 @@
           </div>
         </form>
         <h1 id="city">Los Angeles</h1>
-               <div> <span class="temperature" id="temperature"></span
+               <div> <span class="temperature" id="temperature">7</span
                 ><span class="units"><a href="#" id="celsius-link"> °C</a> | <a href="#" id="fahrenheit-link">°F</a></span>
                 </div>
           <ul>
           <li id="date" class="date"></li>
-          <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/clear-sky-day.png" alt="clearsky-icon" width="50" />
+          <img src="" alt="weather-icon" width="50" id="icon" />
           <li id="description"><strong>Clear</strong></li>
-          <li class="humidity"><strong>Humidity: <span id="humidity"></span>%</strong></li>
           <li class="wind"><strong>Wind: <span id="wind"></span> km/h</strong></li>
             </ul>
           </div>
         </div>
+        <div class="weather-forecast" id="forecast">
+        </div>
       </div>
-      
-    
   </div>
     <script src="script.js">
 
     </script>
+    </div>
   </body>
+    <small>
+          <a
+            href="https://github.com/AWard5000/weather-app"
+            target="_blank"
+            >Open-source code</a
+          >
+          by Alexis Ward
+        </small>
+
 </html>
