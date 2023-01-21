@@ -1,7 +1,7 @@
 
 body {
     font-family: pt serif, helvetica;
-    background-color: #adcfe6;
+   
 }
 h1 {
     text-align: center;
@@ -21,6 +21,7 @@ margin-top: 100px;
     padding: 40px;
     border: 1px solid black;
     border-radius: 15px;
+    background-color: #adcfe6;
     
 }
 
