@@ -37,10 +37,12 @@ function displayWeatherCondition(response) {
   document.querySelector("#wind").innerHTML = Math.round(
     response.data.wind.speed
   );
-  <img
-      src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.weather[0].icon}.png" />
-  document.querySelector("#description").innerHTML =
-    response.data.condition.description;
+  document
+    .querySelector("#icon")
+    .setAttribute(
+      "src",
+      `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
+    );
 }
 
 function searchCity(city) {
