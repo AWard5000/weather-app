@@ -1,5 +1,5 @@
 let apiKey = "6d48t90aao34607b488607a8df81d2bd"
-let apiUrl ="https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric"
+let apiUrl = "https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric"
 
 
 function formatDate(date) {
@@ -27,6 +27,36 @@ function formatDate(date) {
   return `${day} ${hours}:${minutes}`;
 }
 
+function displayForecast(response) {
+  let forecastElement = document.querySelector("#forecast");
+  let forecast = response.data.daily;
+  
+  let days = ["Sun", "Mon", "Tues", "Wed", "Thurs", "Fri", "Sat"];
+  forecast.foreEach(function (forecastDay, Index) {
+    if (index < 5) {
+      forecastHTML =
+      forecastHTML +
+   
+  `
+  <div class="col-2">
+    <div class="weather-forecast-date">${formatday(forecastDay.dt)}</div>
+    <img src="http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.[0]icon}.png" alt="" />
+      <div class="weather-forecast-temperatures">
+     <span class="weather-forecast-temp-max"> ${Math.round(forecastDay.temp.max)}°</span>
+     <span class="weather-forecast-temp-min"> ${Math.round(forecastDay.temp.min)}°</span>
+     </div>
+  </div>
+`;
+});
+forecastHTML = forecastHTML + `</div>`;
+forecastElement.innerHTML = forecastHTML;
+}
+
+  function getForecast(coordinates) {
+  let apiKey = "6d48t90aao34607b488607a8df81d2bd"
+  let apiUrl ="https://api.shecodes.io/weather/v1/forecast?lon=${lon}&lat=${lat}&key=${apiKey}& units=metric";
+  axios.get(apiUrl).then(displayForecast);
+}
 
 function displayWeatherCondition(response) {
   celsiusTemperature = response.data.temperature.current;
@@ -43,6 +73,10 @@ function displayWeatherCondition(response) {
       "src",
       `http://shecodes-assets.s3.amazonaws.com/api/weather/icons/${response.data.condition.icon}.png`
     );
+  document.querySelector("#description").innerHTML =
+    response.data.condition.description;
+
+    getForecast(response.data.coord);
 }
 
 function searchCity(city) {
@@ -61,10 +95,10 @@ function handleSubmit(event) {
 function convertToCelsius(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML =  Math.round(celsiusTemperature); 
-} 
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
 
-  function convertToFahrenheit(event) {
+function convertToFahrenheit(event) {
   event.preventDefault();
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   let temperatureElement = document.querySelector("#temperature");
@@ -92,6 +126,7 @@ function searchLocation(position) {
 
   axios.get(apiUrl).then(displayWeatherCondition);
 }
+
 
 function getCurrentLocation(event) {
   event.preventDefault();
