@@ -28,7 +28,7 @@ function formatDate(date) {
 }
 
 function formatDay(time) {
-  let date = new Date(time);
+  let date = new Date(time * 1000);
   let dayIndex = date.getDay();
   let days = [
     "Sunday",
