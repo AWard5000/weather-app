@@ -55,10 +55,9 @@ margin-top: 100px;
     list-style: none;
 }
 
-.forecast {
-    display: inline-block;
-    justify-content: space-between;
-    
+#forecast {
+    display: inline-flex;
+    justify-content: space-between;   
 }
 .forecast-date {
     font-weight: bold;
